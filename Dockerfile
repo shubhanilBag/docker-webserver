@@ -17,7 +17,7 @@ ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.
 # IMAGE ARGUMENTS WITH DEFAULTS.
 ARG PHP_VERSION=7.2
 ARG ALPINE_VERSION=3.7
-ARG COMPOSER_HASH=544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061
+ARG COMPOSER_HASH=93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8
 ARG NGINX_HTTP_PORT=80
 ARG NGINX_HTTPS_PORT=443
 
@@ -41,6 +41,8 @@ RUN apk add --no-cache --update php-fpm@php \
     php-json@php \
     php-xml@php && \
     ln -s /usr/bin/php7 /usr/bin/php
+
+RUN apk add php-mongodb@php
 
 # CONFIGURE WEB SERVER.
 RUN mkdir -p /var/www && \
